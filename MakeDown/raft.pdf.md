@@ -1,0 +1,7 @@
+# Introdution
+
+Raft在很多方面和现存的consensus algorithm类似，但是它有以下这些独特的特性：
+
+- Strong leader：Raft比其他consensus algorithm使用了更强形式的leadership。比如，log entry只能从leader流向其他server。这简化了对于replicated log的管理并且使Raft更加易于理解。
+- Leader election：Raft使用随机的时钟来选举leader。这只是在原来所有的consensus algorithm都需要的heartbeats的基础上增加了小小的一点东西，但是却简单快速地解决了冲突。
+- Membership changes：Raft通过一种新的joint consensus的方法来实现server集合的改变，其中两个不同配置下的majority在过度阶段会发生重合。这能让集群在配置改变时也能继续正常运行。
